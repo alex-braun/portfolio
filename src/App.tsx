@@ -2,7 +2,6 @@ import {
   createTheme,
   MantineProvider,
   Container,
-  Stack,
   Box,
   Card,
   Flex,
@@ -13,10 +12,13 @@ import {
   RouterProvider,
   Outlet,
   Navigate,
+  useLocation,
 } from "react-router";
-import { Navbar } from "./components/Navbar/Navbar";
+import { PageHeader } from "./components/PageHeader/PageHeader";
 import "@mantine/core/styles.css";
 import "./App.css";
+import { SideBar } from "./components/SideBar/SideBar";
+import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "./pages";
 
 const theme = createTheme({
   colors: {
@@ -61,7 +63,25 @@ const theme = createTheme({
   },
 });
 
+function getPageTitle(pathname: string): string {
+  switch (pathname) {
+    case "/":
+      return "Home";
+    case "/resume":
+      return "Resume";
+    case "/selected-work":
+      return "Selected Work";
+    case "/contact":
+      return "Contact";
+    default:
+      return "Portfolio";
+  }
+}
+
 function Layout() {
+  const location = useLocation();
+  const pageTitle = getPageTitle(location.pathname);
+
   return (
     <Container size="xl" pt={{ base: "xl", sm: 80 }} pb="xl" px="xl">
       <Flex
@@ -71,164 +91,18 @@ function Layout() {
       >
         {/* Sidebar - Responsive width */}
         <Box w={{ base: "100%", md: 275 }} style={{ flexShrink: 0 }}>
-          <Card h="fit-content">This is the sidebar</Card>
+          <SideBar />
         </Box>
 
         {/* Main content - Flexible width */}
-        <Box>
-          <Card>
-            <Navbar />
+        <Box flex={1} w="100%">
+          <Card radius="lg" p="0" pl="lg" withBorder>
+            <PageHeader title={pageTitle} />
             <Outlet />
           </Card>
         </Box>
       </Flex>
     </Container>
-  );
-}
-
-// Home page component
-function HomePage() {
-  return (
-    <Stack align="center" gap="md">
-      <h1>Welcome to My Portfolio</h1>
-      <p>This is the home page of my portfolio website.</p>
-    </Stack>
-  );
-}
-
-// Resume page component
-function ResumePage() {
-  return (
-    <Stack align="center" gap="md">
-      <h1>Resume</h1>
-      <p>Download my resume or view my professional experience and skills.</p>
-      <Stack gap="sm" w="100%" maw={600}>
-        <h2>Experience</h2>
-        <div>
-          <h3>Software Developer</h3>
-          <p>
-            <strong>Company Name</strong> | 2022 - Present
-          </p>
-          <p>
-            Developed and maintained web applications using modern technologies.
-          </p>
-        </div>
-        <div>
-          <h3>Junior Developer</h3>
-          <p>
-            <strong>Previous Company</strong> | 2020 - 2022
-          </p>
-          <p>Assisted in developing and testing software solutions.</p>
-        </div>
-
-        <h2>Skills</h2>
-        <div>
-          <p>
-            <strong>Programming Languages:</strong> JavaScript, TypeScript,
-            Python, Java
-          </p>
-          <p>
-            <strong>Frameworks:</strong> React, Node.js, Express
-          </p>
-          <p>
-            <strong>Tools:</strong> Git, Docker, AWS, Vite
-          </p>
-        </div>
-
-        <h2>Education</h2>
-        <div>
-          <h3>Bachelor of Computer Science</h3>
-          <p>
-            <strong>University Name</strong> | 2016 - 2020
-          </p>
-        </div>
-      </Stack>
-    </Stack>
-  );
-}
-
-// Portfolio page component
-function SelectedWorkPage() {
-  return (
-    <Stack align="center" gap="md">
-      <h1>Portfolio</h1>
-      <p>Check out some of my recent projects and work.</p>
-      <Stack gap="lg" w="100%" maw={800}>
-        <div
-          style={{
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "20px",
-          }}
-        >
-          <h3>E-Commerce Website</h3>
-          <p>
-            Full-stack e-commerce platform built with React, Node.js, and
-            MongoDB.
-          </p>
-          <p>
-            <strong>Technologies:</strong> React, Node.js, Express, MongoDB,
-            Stripe API
-          </p>
-          <p>
-            <strong>Features:</strong> User authentication, product catalog,
-            shopping cart, payment processing
-          </p>
-        </div>
-
-        <div
-          style={{
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "20px",
-          }}
-        >
-          <h3>Task Management App</h3>
-          <p>
-            Collaborative task management application with real-time updates.
-          </p>
-          <p>
-            <strong>Technologies:</strong> React, TypeScript, Socket.io,
-            PostgreSQL
-          </p>
-          <p>
-            <strong>Features:</strong> Real-time collaboration, drag-and-drop,
-            team management
-          </p>
-        </div>
-
-        <div
-          style={{
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            padding: "20px",
-          }}
-        >
-          <h3>Weather Dashboard</h3>
-          <p>
-            Interactive weather dashboard with data visualization and forecasts.
-          </p>
-          <p>
-            <strong>Technologies:</strong> React, D3.js, OpenWeather API,
-            Chart.js
-          </p>
-          <p>
-            <strong>Features:</strong> Interactive charts, location-based
-            weather, historical data
-          </p>
-        </div>
-      </Stack>
-    </Stack>
-  );
-}
-
-// Contact page component
-function ContactPage() {
-  return (
-    <Stack align="center" gap="md">
-      <h1>Contact</h1>
-      <p>Get in touch with me through various channels.</p>
-    </Stack>
   );
 }
 

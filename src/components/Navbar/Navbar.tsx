@@ -19,12 +19,13 @@ export function Navbar() {
 
   const items = links.map((link) => {
     const Icon = link.icon;
+    const isActive = location.pathname === link.link;
     return (
       <Link
         key={link.label}
         to={link.link}
         className={classes.link}
-        data-active={location.pathname === link.link || undefined}
+        data-active={isActive || undefined}
       >
         <Icon size={16} style={{ marginRight: 8 }} />
         {link.label}
@@ -39,17 +40,23 @@ export function Navbar() {
           {items}
         </Group>
 
-        <Group gap="xs">
-          <ActionIcon
-            onClick={() => toggleColorScheme()}
-            variant="default"
-            size="lg"
-            aria-label="Toggle color scheme"
-          >
-            {colorScheme === 'dark' ? <IconSun size={18} /> : <IconMoon size={18} />}
-          </ActionIcon>
-          <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
-        </Group>
+        <ActionIcon
+          onClick={() => toggleColorScheme()}
+          variant="default"
+          size="lg"
+          aria-label="Toggle color scheme"
+          style={{ position: 'absolute', right: '16px' }}
+        >
+          {colorScheme === 'dark' ? <IconSun size={18} /> : <IconMoon size={18} />}
+        </ActionIcon>
+        
+        <Burger 
+          opened={opened} 
+          onClick={toggle} 
+          hiddenFrom="xs" 
+          size="sm" 
+          style={{ position: 'absolute', right: '16px' }}
+        />
       </div>
     </header>
   );
