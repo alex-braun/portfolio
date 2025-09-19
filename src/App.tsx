@@ -5,6 +5,7 @@ import {
   Box,
   Card,
   Flex,
+  DEFAULT_THEME,
 } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
 import {
@@ -20,33 +21,55 @@ import "./App.css";
 import { SideBar } from "./components/SideBar/SideBar";
 import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "./pages";
 
+
+
+/* CSS HEX */
+// --hunyadi-yellow: #FFB452ff;
+// --butterscotch: #DE9848ff;
+// --english-violet: #4C3961ff;
+// --tyrian-purple: #6B2944ff;
+// --dark-purple: #2D2238ff;
+// --spring-green: #23FF98ff;
+// --gray: #7B7B7Bff;
+// --blue-crayola: #577FE3ff;
+// --folly: #FD2D67ff;
+// --raisin-black: #1C1523ff;
+
 const theme = createTheme({
   colors: {
-    // Add your color
-    deepBlue: [
-      "#eef3ff",
-      "#dce4f5",
-      "#b9c7e2",
-      "#94a8d0",
-      "#748dc1",
-      "#5f7cb8",
-      "#5474b4",
-      "#44639f",
-      "#39588f",
-      "#2d4b81",
+    ...DEFAULT_THEME.colors,    
+    dark: [
+      "#1C1523", // #1C1523ff
+      ...DEFAULT_THEME.colors.dark,
     ],
-    // or replace default theme color
     blue: [
-      "#eef3ff",
-      "#dee2f2",
-      "#bdc2de",
-      "#98a0ca",
-      "#7a84ba",
-      "#6672b0",
-      "#5c68ac",
-      "#4c5897",
-      "#424e88",
-      "#364379",
+      "#577FE3", // #577FE3ff
+      ...DEFAULT_THEME.colors.blue,
+    ],
+    gray: [
+      "#7B7B7B", // #7B7B7Bff
+      ...DEFAULT_THEME.colors.gray,
+    ],
+    green: [
+      "#23FF98", // #23FF98ff
+      ...DEFAULT_THEME.colors.green,
+    ],
+    purple: [
+      "#2D2238", // #2D2238ff
+      ...DEFAULT_THEME.colors.grape,
+    ],
+    red: [
+      "#FD2D67", // #FD2D67ff
+      ...DEFAULT_THEME.colors.red,
+    ],
+    violet: [
+      "#4C3961", // #4C3961ff
+      ...DEFAULT_THEME.colors.violet,
+    ],
+    yellow: [
+      "#FFB452", // #FFB452ff
+      "#DE9848", // #DE9848ff
+      ...DEFAULT_THEME.colors.yellow,
     ],
   },
 
@@ -138,6 +161,8 @@ const router = createBrowserRouter([
 
 function App() {
   const colorScheme = useColorScheme();
+
+  console.log(theme);
 
   return (
     <MantineProvider theme={theme} defaultColorScheme={colorScheme}>
