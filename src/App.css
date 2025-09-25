@@ -41,3 +41,31 @@
   color: #888;
 }
 
+/* Custom heading colors for different levels */
+h1, [data-mantine-component="Title"][data-order="1"] {
+  color: var(--custom-h1-color) !important;
+}
+
+h2, [data-mantine-component="Title"][data-order="2"] {
+  color: var(--custom-h2-color) !important;
+}
+
+h3, [data-mantine-component="Title"][data-order="3"] {
+  color: var(--custom-h3-color) !important;
+}
+
+h4, [data-mantine-component="Title"][data-order="4"] {
+  color: var(--custom-h4-color) !important;
+}
+
+h5, [data-mantine-component="Title"][data-order="5"] {
+  color: var(--custom-h5-color) !important;
+}
+
+h6, [data-mantine-component="Title"][data-order="6"] {
+  color: var(--custom-h6-color) !important;
+}
+p {
+  color: var(--custom-p-color) !important;
+}
+
