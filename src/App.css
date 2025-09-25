@@ -69,3 +69,13 @@ p {
   color: var(--custom-p-color) !important;
 }
 
+a {
+  color: var(--custom-link-text-0);
+  &:hover {
+    color: var(--custom-link-text-hover-0);
+  }
+  &[data-active] {
+    /* background-color: var(--custom-link-bg-active-0); */
+    color: var(--custom-link-bg-active-0);
+  }
+}

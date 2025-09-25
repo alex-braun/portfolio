@@ -170,14 +170,14 @@ const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
     '--custom-h4-color': theme.colors.white[2], // Lighter for h4
     '--custom-h5-color': theme.colors.gray[2], // Even lighter for h5
     '--custom-h6-color': theme.colors.gray[1], // Lightest for h6
-    '--custom-p-color': theme.colors.white[2], // Lightest for p
+    '--custom-p-color': theme.colors.gray[2], // Lightest for p
   },
 });
 
 function getPageTitle(pathname: string): string {
   switch (pathname) {
     case "/":
-      return "Home";
+      return "About";
     case "/resume":
       return "Resume";
     case "/selected-work":
@@ -208,14 +208,13 @@ function Layout() {
         {/* Main content - Flexible width */}
         <Box flex={1} w="100%">
           <Card 
-            radius="xs" 
             p="0" 
             pl="lg" 
-            withBorder
+            // withBorder
             style={{
               backgroundColor: 'var(--mantine-color-card-bg)',
-              color: 'var(--mantine-color-primary-text)',
-              borderWidth: '3px',
+            //   color: 'var(--mantine-color-primary-text)',
+            //   borderWidth: '3px',
             }}
           >
             <PageHeader title={pageTitle} />

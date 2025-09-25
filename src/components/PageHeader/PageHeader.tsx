@@ -1,4 +1,4 @@
-import { Flex, Title, Box } from '@mantine/core';
+import { Flex, Title, Box, Container } from '@mantine/core';
 import { Navbar } from '../Navbar/Navbar';
 
 interface PageHeaderProps {
@@ -7,13 +7,13 @@ interface PageHeaderProps {
 
 export function PageHeader({ title }: PageHeaderProps) {
   return (
-    <Flex justify="space-between" align="center" w="100%">
-      <Title order={1} size="h1" style={{ flexShrink: 0 }}>
-        {title}
-      </Title>
-      <Box style={{ marginLeft: 'auto' }}>
+    <Container w="100%" pb="lg" pr="0">
+      <Box>
         <Navbar />
       </Box>
-    </Flex>
+      <Title order={1} size="h1" pt="xl" style={{ flexShrink: 0 }}>
+        {title}
+      </Title>
+    </Container>
   );
 }

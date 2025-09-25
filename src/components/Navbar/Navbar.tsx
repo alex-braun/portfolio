@@ -6,7 +6,7 @@ import { useMantineColorScheme } from '@mantine/core';
 import classes from './Navbar.module.css';
 
 const links = [
-  { link: '/', label: 'Home', icon: IconHome },
+  { link: '/', label: 'About', icon: IconHome },
   { link: '/resume', label: 'Resume', icon: IconFileText },
   { link: '/selected-work', label: 'Selected Work', icon: IconBriefcase },
   { link: '/contact', label: 'Contact', icon: IconMail },
@@ -36,7 +36,7 @@ export function Navbar() {
   return (
     <header className={classes.header}>
       <div className={classes.inner}>
-        <Group gap={5} visibleFrom="xs">
+        <Group gap={25} visibleFrom="xs">
           {items}
         </Group>
 
