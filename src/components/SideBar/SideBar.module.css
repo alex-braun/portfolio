@@ -1,0 +1,9 @@
+.sidebar {
+  position: static;
+}
+
+.desktop {
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+}

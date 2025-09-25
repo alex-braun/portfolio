@@ -197,7 +197,7 @@ function Layout() {
     <Container size="xl" pt={{ base: "xl", sm: 80 }} pb="xl" px="xl">
       <Flex
         gap="lg"
-        align="flex-start"
+        align="stretch"
         direction={{ base: "column", md: "row" }}
       >
         {/* Sidebar - Responsive width */}
