@@ -22,18 +22,14 @@ import "./App.css";
 import { SideBar } from "./components/SideBar/SideBar";
 import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "./pages";
 
-
-
 // --night: #0C0C0C; //
 // --citrine: #E5CF0E; //
 // --battleship-gray: #858585; //
 // --white: #FDFDFD; //
 // --eerie-black: #1A1A1A; //
 // --silver: #C8C8C8;
-// --silver-2: #BBBBBC; // 
+// --silver-2: #BBBBBC; //
 // --davys-gray: #535353; //
-
-
 
 /* CSS HEX */
 // --hunyadi-yellow: #FFB452;
@@ -48,6 +44,13 @@ import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "./pages";
 // --raisin-black: #1C1523;
 
 const theme = createTheme({
+  breakpoints: {
+    xs: "36em", // 576px
+    sm: "48em", // 768px
+    md: "68.4375em", // 1078px (changed from 62em/992px)
+    lg: "75em", // 1200px
+    xl: "88em", // 1408px
+  },
   colors: {
     ...DEFAULT_THEME.colors,
     white: [
@@ -62,9 +65,10 @@ const theme = createTheme({
       "#383838", // #383838
       "#202020", // #202020
       "#080808", // #080808
-    ],    
+    ],
     dark: [
       "#0C0C0C", // #0C0C0C dark background black theme.
+      "#202124", // #202124 dark background black theme.
       "#1A1A1A", // #1A1A1A // background dark.
       "#170F1F", // #170F1F
       "#1C1523", // #1C1523
@@ -118,7 +122,7 @@ const theme = createTheme({
   headings: {
     fontFamily: "Roboto, sans-serif",
     sizes: {
-      h1: { fontSize: "36px" },
+      h1: { fontSize: "30px" },
     },
   },
 });
@@ -129,48 +133,49 @@ const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
     // Variables that don't change based on color scheme
   },
   light: {
-    '--mantine-color-primary-bg': theme.colors.dark[0], // #FFFFFF
-    '--mantine-color-primary-text': theme.colors.white[3], // #1C1523
-    '--mantine-color-card-bg': theme.colors.dark[1], // #F5F5F5
-    '--mantine-color-border': theme.colors.dark[7], // #DBDBDB
+    "--mantine-color-primary-bg": theme.colors.dark[0],
+    "--mantine-color-primary-text": theme.colors.white[3], 
+    "--mantine-color-card-bg": theme.colors.dark[1], 
+    "--mantine-color-border": theme.colors.dark[7], 
     // Override Mantine's internal dark color variables
-    '--mantine-color-dark-4': theme.colors.dark[7], // Override the dark.4 that Mantine uses for borders
+    "--mantine-color-dark-4": theme.colors.dark[7], // Override the dark.4 that Mantine uses for borders
     // Header colors for light mode
-    '--custom-h1-color': theme.colors.dark[9], // Darkest for h1
-    '--custom-h2-color': theme.colors.dark[8], // Slightly lighter for h2
-    '--custom-h3-color': theme.colors.dark[7], // Medium for h3
-    '--custom-h4-color': theme.colors.dark[6], // Lighter for h4
-    '--custom-h5-color': theme.colors.dark[5], // Even lighter for h5
-    '--custom-h6-color': theme.colors.dark[4], // Lightest for h6
+    "--custom-h1-color": theme.colors.dark[9], // Darkest for h1
+    "--custom-h2-color": theme.colors.dark[8], // Slightly lighter for h2
+    "--custom-h3-color": theme.colors.dark[7], // Medium for h3
+    "--custom-h4-color": theme.colors.dark[6], // Lighter for h4
+    "--custom-h5-color": theme.colors.dark[5], // Even lighter for h5
+    "--custom-h6-color": theme.colors.dark[4], // Lightest for h6
   },
   dark: {
-    '--mantine-color-body': theme.colors.dark[0],
-    '--mantine-color-primary-bg': theme.colors.dark[0], 
-    '--mantine-color-primary-text': theme.colors.gray[2],
-    '--mantine-color-card-bg': theme.colors.dark[0],
-    '--mantine-color-border': theme.colors.dark[3],
-    '--paper-border-color': theme.colors.dark[3],
+    "--mantine-color-body": theme.colors.dark[1],
+    "--mantine-color-primary-bg": theme.colors.dark[0],
+    "--mantine-color-primary-text": theme.colors.gray[2],
+    "--mantine-color-card-bg": theme.colors.dark[1],
+    "--mantine-color-border": theme.colors.gray[1],
+    "--paper-border-color": theme.colors.gray[1],
+    "--mantine-color-gray-3": theme.colors.gray[2],
     // Override Mantine's internal dark color variables
-    '--mantine-color-dark-4': theme.colors.dark[3],
-    '--custom-link-bg-active-0': theme.colors.yellow[0],
-    '--custom-link-yellow-1': theme.colors.yellow[1], // Override the dark.4 that Mantine uses for borders
-    '--custom-link-text-hover-0': theme.colors.blue[0],
-    '--custom-link-text-0': theme.colors.gray[0],
-    '--custom-link-text-active-0': theme.colors.dark[1],
+    "--mantine-color-dark-4": theme.colors.dark[3],
+    "--custom-link-bg-active-0": theme.colors.yellow[0],
+    "--custom-link-yellow-1": theme.colors.yellow[1], // Override the dark.4 that Mantine uses for borders
+    "--custom-link-text-hover-0": theme.colors.blue[0],
+    "--custom-link-text-0": theme.colors.gray[0],
+    "--custom-link-text-active-0": theme.colors.dark[1],
 
-    '--custom-card-bg-1': theme.colors.dark[1],
-    '--custom-violet-1': theme.colors.violet[1],
+    "--custom-card-bg-1": theme.colors.dark[2],
+    "--custom-violet-1": theme.colors.violet[1],
 
-    '--custom-header-1-color': theme.colors.white[2],
-    '--custom-card-title-1-color': theme.colors.gray[4],
+    "--custom-header-1-color": theme.colors.white[2],
+    "--custom-card-title-1-color": theme.colors.gray[4],
     // Header colors for dark mode
-    '--custom-h1-color': theme.colors.white[2], // Brightest for h1
-    '--custom-h2-color': theme.colors.gray[4], // Slightly dimmer for h2
-    '--custom-h3-color': theme.colors.gray[3], // Medium for h3
-    '--custom-h4-color': theme.colors.white[2], // Lighter for h4
-    '--custom-h5-color': theme.colors.gray[2], // Even lighter for h5
-    '--custom-h6-color': theme.colors.gray[1], // Lightest for h6
-    '--custom-p-color': theme.colors.gray[2], // Lightest for p
+    "--custom-h1-color": theme.colors.white[2], // Brightest for h1
+    "--custom-h2-color": theme.colors.gray[4], // Slightly dimmer for h2
+    "--custom-h3-color": theme.colors.gray[3], // Medium for h3
+    "--custom-h4-color": theme.colors.white[2], // Lighter for h4
+    "--custom-h5-color": theme.colors.gray[2], // Even lighter for h5
+    "--custom-h6-color": theme.colors.gray[1], // Lightest for h6
+    "--custom-p-color": theme.colors.gray[2], // Lightest for p
   },
 });
 
@@ -195,30 +200,29 @@ function Layout() {
 
   return (
     <Container size="xl" pt={{ base: "xl", sm: 80 }} pb="xl" px="xl">
-      <Flex
-        gap="lg"
-        align="stretch"
-        direction={{ base: "column", md: "row" }}
-      >
+      <Flex gap="lg" align="stretch" direction={{ base: "column", md: "row" }}>
         {/* Sidebar - Responsive width */}
-        <Box w={{ base: "100%", md: 275 }} style={{ flexShrink: 0 }}>
+        <Box w={{ base: "100%", md: 250 }} style={{ flexShrink: 0 }}>
           <SideBar />
         </Box>
 
         {/* Main content - Flexible width */}
         <Box flex={1} w="100%">
-          <Card 
-            p="0" 
-            pl="lg" 
-            // withBorder
+          <Card
+            p="0"
+            withBorder
+            radius="lg"
             style={{
-              backgroundColor: 'var(--mantine-color-card-bg)',
-            //   color: 'var(--mantine-color-primary-text)',
-            //   borderWidth: '3px',
+              backgroundColor: "var(--mantine-color-card-bg)",
+              borderColor: "var(--mantine-color-border)",
+              //   color: 'var(--mantine-color-primary-text)',
+              //   borderWidth: '3px',
             }}
           >
             <PageHeader title={pageTitle} />
-            <Outlet />
+            <Box p="xl">
+              <Outlet />
+            </Box>
           </Card>
         </Box>
       </Flex>
@@ -259,11 +263,9 @@ const router = createBrowserRouter([
 function App() {
   const colorScheme = useColorScheme();
 
-  console.log(theme);
-
   return (
-    <MantineProvider 
-      theme={theme} 
+    <MantineProvider
+      theme={theme}
       defaultColorScheme={colorScheme}
       cssVariablesResolver={cssVariablesResolver}
     >
