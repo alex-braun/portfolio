@@ -199,7 +199,7 @@ function Layout() {
   const pageTitle = getPageTitle(location.pathname);
 
   return (
-    <Container size="xl" pt={{ base: "xl", sm: 80 }} pb="xl" px="xl">
+    <Container size="xl" pt={{ base: "lg", sm: 70 }} pb="xl" px="xl">
       <Flex gap="lg" align="stretch" direction={{ base: "column", md: "row" }}>
         {/* Sidebar - Responsive width */}
         <Box w={{ base: "100%", md: 250 }} style={{ flexShrink: 0 }}>
@@ -211,7 +211,7 @@ function Layout() {
           <Card
             p="0"
             withBorder
-            radius="lg"
+            // radius="lg"
             style={{
               backgroundColor: "var(--mantine-color-card-bg)",
               borderColor: "var(--mantine-color-border)",

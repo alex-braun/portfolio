@@ -1,4 +1,4 @@
-import { Card, Text, Title, Stack, Anchor, useMantineTheme } from "@mantine/core";
+import { Card, Text, Title, Stack, Anchor, Box, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import classes from "./SideBar.module.css";
 import { SupabaseImage } from "../SupabaseImage";
@@ -10,14 +10,17 @@ export function SideBar() {
   return (
     <Card 
       h="fit-content" 
-      radius="xs" 
-      withBorder 
+      // radius="lg" 
+      withBorder
       bg="var(--custom-card-bg-1)"
       className={`${classes.sidebar} ${isDesktop ? classes.desktop : ''}`}
       p="md"
+      style={{
+        borderColor: "var(--mantine-color-border)",
+      }}
     >
       {/* Profile Image */}
-      <Card.Section className={classes.imageSection} mb="md">
+      <Box className={classes.imageSection} mb="md">
         <SupabaseImage
           path="TayTay.jpg"
           alt="Profile Avatar"
@@ -25,7 +28,7 @@ export function SideBar() {
           h={200}
           fit="scale-down"
         />
-      </Card.Section>
+      </Box>
 
       {/* Name and Title */}
       <Stack gap="xs" mb="md">
