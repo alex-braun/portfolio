@@ -3,7 +3,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router';
 import { IconSun, IconMoon, IconHome, IconFileText, IconBriefcase, IconMail } from '@tabler/icons-react';
 import { useMantineColorScheme } from '@mantine/core';
-import classes from './Navbar.module.css';
+import classes from '@components/Navbar/Navbar.module.css';
 
 const links = [
   { link: '/', label: 'About', icon: IconHome },

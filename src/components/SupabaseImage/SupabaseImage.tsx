@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Image, Skeleton } from '@mantine/core'
-import { getImageUrl } from '../../services/imageService'
+import { getImageUrl } from '@services/imageService'
 
 interface SupabaseImageProps {
   /** Path to the image in Supabase storage (e.g., 'profile/avatar.jpg') */

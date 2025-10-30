@@ -1,4 +1,4 @@
-import { supabase, STORAGE_BUCKET } from '../lib/supabase'
+import { supabase, STORAGE_BUCKET } from '@lib/supabase'
 
 export interface ImageUrlResult {
   data: string | null

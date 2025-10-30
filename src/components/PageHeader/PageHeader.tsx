@@ -1,5 +1,5 @@
 import { Flex, Title, Box } from "@mantine/core";
-import { Navbar } from "../Navbar/Navbar";
+import { Navbar } from "@components/Navbar/Navbar";
 
 interface PageHeaderProps {
   title: string;

@@ -16,11 +16,11 @@ import {
   Navigate,
   useLocation,
 } from "react-router";
-import { PageHeader } from "./components/PageHeader/PageHeader";
+import { PageHeader } from "@components/PageHeader/PageHeader";
 import "@mantine/core/styles.css";
-import "./App.css";
-import { SideBar } from "./components/SideBar/SideBar";
-import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "./pages";
+import "@/App.css";
+import { SideBar } from "@components";
+import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "@pages";
 
 // --night: #0C0C0C; //
 // --citrine: #E5CF0E; //

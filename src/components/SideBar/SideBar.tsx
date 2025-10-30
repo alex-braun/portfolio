@@ -1,7 +1,7 @@
 import { Card, Text, Title, Stack, Anchor, Box, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import classes from "./SideBar.module.css";
-import { SupabaseImage } from "../SupabaseImage";
+import classes from "@components/SideBar/SideBar.module.css";
+import { SupabaseImage } from "@components/SupabaseImage";
 
 export function SideBar() {
   const theme = useMantineTheme();

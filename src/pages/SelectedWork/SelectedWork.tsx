@@ -1,5 +1,5 @@
 import { Stack, Card, Text, Title, Group, Badge } from '@mantine/core';
-import classes from './SelectedWork.module.css';
+import classes from '@pages/SelectedWork/SelectedWork.module.css';
 
 export function SelectedWorkPage() {
   return (
