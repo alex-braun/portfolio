@@ -74,6 +74,9 @@ a {
   &:hover {
     color: var(--custom-link-text-hover-0);
   }
+  &:focus-visible {
+    color: var(--custom-link-text-focus-0);
+  }
   &[data-active] {
     /* background-color: var(--custom-link-bg-active-0); */
     color: var(--custom-link-bg-active-0);

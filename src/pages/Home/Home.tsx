@@ -1,4 +1,4 @@
-import { Stack, Title } from '@mantine/core';
+import { Stack, Title, Text } from '@mantine/core';
 
 export function HomePage() {
   return (
@@ -12,6 +12,7 @@ export function HomePage() {
       <Title order={4}>H4 - Lighter</Title>
       <Title order={5}>H5 - Even Lighter</Title>
       <Title order={6}>H6 - Lightest</Title>
+      <Text>Text to test the color.</Text>
     </Stack>
   );
 }

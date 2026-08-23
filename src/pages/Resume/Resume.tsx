@@ -76,8 +76,8 @@ export function ResumePage() {
                 </Text>
               </Group>
               <Text size="sm" c="var(--custom-p-color)" mb="xs">
-                F1V Team lead, overseeing and mentoring fellow F1V devs on agile
-                teams.
+                Team lead, overseeing and mentoring fellow F1V devs on agile
+                teams across both internal and external projects.
               </Text>
             </Timeline.Item>
 

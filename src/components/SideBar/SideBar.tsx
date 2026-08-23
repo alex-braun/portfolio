@@ -32,8 +32,8 @@ export function SideBar() {
 
       {/* Name and Title */}
       <Stack gap="xs" mb="md">
-        <Title order={2} size="h3" c="var(--custom-h1-color)">Alex Braun</Title>
-        <Text size="sm" c="var(--custom-h3-color)" fw={500}>Senior Software Engineer II</Text>
+        <Title order={2}>Alex Braun</Title>
+        <Text>Senior Software Engineer II</Text>
       </Stack>
 
       {/* Contact Info */}
