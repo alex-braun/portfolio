@@ -3,26 +3,26 @@ import { SupabaseAvatar } from "@components/SupabaseAvatar";
 import { ResumeCard } from "./ResumeCard";
 import { TimelineBullet } from "./TimelineBullet";
 import { formatDateRange } from "../resume.utils";
-import type { EducationEntry } from "../resume.types";
+import type { Position } from "../resume.types";
 
-interface EducationTimelineProps {
-  entries: EducationEntry[];
+interface ExperienceTimelineProps {
+  positions: Position[];
 }
 
-export function EducationTimeline({
-  entries,
-}: Readonly<EducationTimelineProps>) {
+export function ExperienceTimeline({
+  positions,
+}: Readonly<ExperienceTimelineProps>) {
   return (
     <ResumeCard>
       <Timeline bulletSize={24} lineWidth={2}>
-        {entries.map((entry) => (
+        {positions.map((position) => (
           <Timeline.Item
-            key={entry.institution}
-            title={entry.degree}
+            key={`${position.company}-${position.jobTitle}-${position.startDate}`}
+            title={position.jobTitle}
             bullet={
               <TimelineBullet
-                icon="school"
-                gradient={{ from: "violet", to: "purple", deg: 90 }}
+                icon="briefcase"
+                gradient={{ from: "blue", to: "teal", deg: 90 }}
               />
             }
           >
@@ -30,18 +30,18 @@ export function EducationTimeline({
               <SupabaseAvatar
                 size={20}
                 radius="sm"
-                path={entry.institutionLogo}
-                alt={entry.institution}
+                path={position.companyLogo}
+                alt={position.company}
               />
               <Text size="xs" c="var(--custom-h4-color)" fw={500}>
-                {entry.institution}
+                {position.company}
               </Text>
             </Group>
             <Text size="sm" c="var(--custom-h4-color)" mb="xs">
-              {formatDateRange(entry)}
+              {formatDateRange(position)}
             </Text>
             <List size="sm" c="var(--custom-p-color)" spacing="xs" mb="xs">
-              {entry.bulletPoints?.map((point) => (
+              {position.bulletPoints.map((point) => (
                 <List.Item key={point}>{point}</List.Item>
               ))}
             </List>

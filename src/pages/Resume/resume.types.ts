@@ -6,27 +6,25 @@ export interface TimelineGradient {
   deg?: number;
 }
 
-export interface Position {
+export interface DateRange {
+  /** ISO date (YYYY-MM-DD) */
+  startDate: string;
+  /** ISO date (YYYY-MM-DD); omitted means "Present" */
+  endDate?: string;
+}
+
+export interface Position extends DateRange {
   jobTitle: string;
-  jobDateRange: string;
-  bulletPoints: string[];
-  icon: IconName;
-  gradient: TimelineGradient;
-}
-
-export interface Company {
-  companyName: string;
+  company: string;
   companyLogo: string;
-  positions: Position[];
+  bulletPoints: string[];
 }
 
-export interface EducationEntry {
-  title: string;
+export interface EducationEntry extends DateRange {
   institution: string;
-  dateRange: string;
-  description?: string[];
-  icon: IconName;
-  gradient: TimelineGradient;
+  institutionLogo: string;
+  degree: string;
+  bulletPoints?: string[];
 }
 
 export interface InterestEntry {
