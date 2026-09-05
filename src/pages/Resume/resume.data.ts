@@ -59,13 +59,6 @@ export const experience: Company[] = [
 
 export const education: EducationEntry[] = [
   {
-    title: "Bachelor of Science Degree - Music Industry",
-    institution: "Northeastern University",
-    dateRange: "May 2008",
-    icon: "school",
-    gradient: { from: "violet", to: "purple", deg: 90 },
-  },
-  {
     title: "Web Development Immersive Program",
     institution: "General Assembly Boston",
     dateRange: "July 2016 - October 2016",
@@ -75,6 +68,13 @@ export const education: EducationEntry[] = [
       "Completed a 12-week intensive course with a strong focus on full stack web development and RESTful web services.",
       "Worked individually and as part of a team to build four web applications with project deadlines and specifications.",
     ],
+  },
+  {
+    title: "Bachelor of Science Degree - Music Industry",
+    institution: "Northeastern University",
+    dateRange: "Sept 2003 - May 2008",
+    icon: "school",
+    gradient: { from: "violet", to: "purple", deg: 90 },
   },
 ];
 

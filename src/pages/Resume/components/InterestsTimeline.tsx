@@ -1,4 +1,5 @@
-import { Text, Timeline } from "@mantine/core";
+import { Stack, Text, Timeline } from "@mantine/core";
+import { ResumeCard } from "./ResumeCard";
 import { TimelineBullet } from "./TimelineBullet";
 import type { InterestEntry } from "../resume.types";
 
@@ -10,20 +11,30 @@ export function InterestsTimeline({
   entries,
 }: Readonly<InterestsTimelineProps>) {
   return (
-    <Timeline bulletSize={24} lineWidth={2}>
+    <Stack gap="lg">
       {entries.map((entry) => (
-        <Timeline.Item
-          key={entry.title}
-          title={entry.title}
-          bullet={<TimelineBullet icon={entry.icon} gradient={entry.gradient} />}
-        >
-          {entry.description.map((paragraph) => (
-            <Text key={paragraph} size="sm" c="var(--custom-p-color)" mb="xs">
-              {paragraph}
-            </Text>
-          ))}
-        </Timeline.Item>
+        <ResumeCard key={entry.title}>
+          <Timeline bulletSize={24} lineWidth={2}>
+            <Timeline.Item
+              title={entry.title}
+              bullet={
+                <TimelineBullet icon={entry.icon} gradient={entry.gradient} />
+              }
+            >
+              {entry.description.map((paragraph) => (
+                <Text
+                  key={paragraph}
+                  size="sm"
+                  c="var(--custom-p-color)"
+                  mb="xs"
+                >
+                  {paragraph}
+                </Text>
+              ))}
+            </Timeline.Item>
+          </Timeline>
+        </ResumeCard>
       ))}
-    </Timeline>
+    </Stack>
   );
 }

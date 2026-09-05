@@ -1,6 +1,6 @@
-import { Box, Card, Group, List, Text, Timeline, Title } from "@mantine/core";
+import { Box, Group, List, Text, Timeline, Title } from "@mantine/core";
 import { SupabaseAvatar } from "@components/SupabaseAvatar";
-import classes from "@pages/SelectedWork/SelectedWork.module.css";
+import { ResumeCard } from "./ResumeCard";
 import { TimelineBullet } from "./TimelineBullet";
 import type { Company } from "../resume.types";
 
@@ -12,16 +12,10 @@ export function CompanyExperience({
   company,
 }: Readonly<CompanyExperienceProps>) {
   return (
-    <Card
-      className={classes.card}
-      withBorder
-      radius="xs"
-      p="xl"
-      style={{ borderColor: "var(--mantine-color-border)" }}
-    >
+    <ResumeCard>
       <Group align="flex-start" gap="md" mb="md">
         <SupabaseAvatar
-          size={60}
+          size={40}
           radius="md"
           path={company.companyLogo}
           alt={company.companyName}
@@ -53,6 +47,6 @@ export function CompanyExperience({
           </Timeline.Item>
         ))}
       </Timeline>
-    </Card>
+    </ResumeCard>
   );
 }
