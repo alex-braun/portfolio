@@ -229,7 +229,6 @@ function getPageTitle(pathname: string): string {
 function Layout() {
   const location = useLocation();
   const pageTitle = getPageTitle(location.pathname);
-
   return (
     <Container size="xl" pt={{ base: "lg", sm: 70 }} pb="xl" px="xl">
       <Flex gap="lg" align="stretch" direction={{ base: "column", md: "row" }}>

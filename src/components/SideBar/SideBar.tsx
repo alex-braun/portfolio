@@ -47,7 +47,6 @@ export function SideBar() {
         <Anchor href="https://github.com/alex-braun" target="_blank" size="sm" c="var(--custom-link-text-0)">
           github.com/alex-braun
         </Anchor>
-        <Text size="sm" c="var(--custom-h3-color)">(781) 910-7798</Text>
       </Stack>
     </Card>
   );
