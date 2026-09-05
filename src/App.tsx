@@ -169,7 +169,13 @@ const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
     "--mantine-color-body": theme.colors.dark[1],
     "--mantine-color-primary-bg": theme.colors.dark[0],
     "--mantine-color-primary-text": theme.colors.gray[2],
-    "--mantine-color-card-bg": theme.colors.dark[1],
+    // Was dark[1] (#202124) - same shade as the page body, so the content
+    // card blended into the page and individual item cards (Resume
+    // experience blocks, SelectedWork project cards) used dark[2] to stand
+    // out as their own darker surfaces instead. Moved the darker shade up to
+    // the content card itself so the whole section reads as one dark card;
+    // see the `.card` class change that stops nested items from re-darkening.
+    "--mantine-color-card-bg": theme.colors.dark[2],
     "--mantine-color-border": theme.colors.gray[1],
     // Mantine defaults --mantine-color-text to var(--mantine-color-dark-0),
     // assuming dark.0 is the *lightest* shade of the dark scale (its own
@@ -182,8 +188,13 @@ const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
     "--mantine-color-text": theme.colors.white[2], // #FDFDFD, 15.8:1+ vs card/sidebar bg
     "--paper-border-color": theme.colors.gray[1],
     "--mantine-color-gray-3": theme.colors.gray[2],
-    // Override Mantine's internal dark color variables
-    "--mantine-color-dark-4": theme.colors.dark[3],
+    // Override Mantine's internal dark color variables. Mantine uses this
+    // for default component borders (Divider, Timeline connector line and
+    // bullet border, Card, Menu, Input...) - was dark[3] (#170F1F), nearly
+    // the same luminance as the dark[2] content-card background, so those
+    // borders all but disappeared. Matched to --mantine-color-border like
+    // the light branch already does (both white[5] there).
+    "--mantine-color-dark-4": theme.colors.gray[1],
     "--custom-link-bg-active-0": theme.colors.white[2], // active-nav text color; lighter/white like hover/focus rather than a separate accent hue - #FDFDFD, 15.8:1+ vs sidebar/header bg
     "--custom-link-yellow-1": theme.colors.yellow[1], // Override the dark.4 that Mantine uses for borders
     "--custom-link-text-hover-0": theme.colors.blue[0], // 4.60:1 vs sidebar/header bg - fine as-is
