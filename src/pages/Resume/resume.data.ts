@@ -8,7 +8,7 @@ export const experience: Position[] = [
     startDate: "2024-03-01",
     bulletPoints: [
       "Set coding standards and own technical direction for a 5-engineer team split across a 12-hour time zone gap, resolving delivery escalations before they reach the release date.",
-      "Owned the reporting feature for the flagship back-to-school 2026 release, aligning 4 teams on a single scope and timeline; drove 534 new account activations and 4,170 unique visitors during the pre-term administrator rollout.",
+      "Owned the reporting feature for the flagship back-to-school 2026 release, coordinating with 3 other teams to keep scope and timeline aligned; drove 534 new account activations and 4,170 unique visitors during the pre-term administrator rollout.",
       "Built an AI-assisted test migration workflow that runs conversions concurrently across git worktrees using subagents. It ports the behavior under test rather than the original syntax, so coverage carries over instead of being hand-rewritten, and flags gaps for human review rather than guessing.",
       "Designed an AI-driven mocking layer that let the frontend team build against realistic data 6 weeks before backend endpoints were complete, keeping the back-to-school release launch off the critical path.",
     ],
