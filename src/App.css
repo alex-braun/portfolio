@@ -82,3 +82,26 @@ a {
     color: var(--custom-link-bg-active-0);
   }
 }
+
+/* Page transition: old page swaps out instantly, new page fades in */
+::view-transition-old(root) {
+  animation: none;
+}
+::view-transition-new(root) {
+  animation: fade .1s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}

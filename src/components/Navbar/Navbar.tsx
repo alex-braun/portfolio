@@ -26,6 +26,7 @@ export function Navbar() {
         to={link.link}
         className={classes.link}
         data-active={isActive || undefined}
+        viewTransition
       >
         <Icon size={16} style={{ marginRight: 8 }} />
         {link.label}
