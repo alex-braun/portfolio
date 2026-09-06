@@ -1,18 +1,28 @@
-import { Stack, Title, Text } from '@mantine/core';
+import { Stack, Text } from '@mantine/core';
+import { HighlightCards } from './components/HighlightCards';
+import { highlights } from './home.data';
 
 export function HomePage() {
   return (
-    <Stack align="center" gap="md">
-      <p>This is the home page of my portfolio website.</p>
-      
-      {/* Test different header levels with different colors */}
-      <Title order={1}>H1 - Darkest/Brightest</Title>
-      <Title order={2}>H2 - Slightly Lighter</Title>
-      <Title order={3}>H3 - Medium</Title>
-      <Title order={4}>H4 - Lighter</Title>
-      <Title order={5}>H5 - Even Lighter</Title>
-      <Title order={6}>H6 - Lightest</Title>
-      <Text>Text to test the color.</Text>
+    <Stack gap="xl">
+      <Stack gap="md">
+        <Text>
+          I&apos;m a senior software engineer who lives at the intersection of
+          frontend craft and full-stack architecture — React and TypeScript day
+          to day, with the backend, database, and cloud experience to design a
+          system end to end rather than just the screen you see. AI is part of
+          how I build now — I use it throughout my development process to move
+          faster and think through problems more thoroughly. I like taking
+          ambiguous problems, designing the right shape for them, and getting
+          the details right on both ends.
+        </Text>
+        <Text>
+          If you&apos;re looking for someone who can own a feature from
+          database to pixel and builds with the best tools available to get
+          there faster, let&apos;s talk.
+        </Text>
+      </Stack>
+      <HighlightCards entries={highlights} />
     </Stack>
   );
 }

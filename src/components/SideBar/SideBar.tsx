@@ -22,7 +22,7 @@ export function SideBar() {
       {/* Profile Image */}
       <Box className={classes.imageSection} mb="md">
         <SupabaseImage
-          path="TayTay.jpg"
+          path="alex_headshot.jpg"
           alt="Profile Avatar"
           fallbackSrc="https://i.imgur.com/ZL52Q2D.png"
           h={200}
