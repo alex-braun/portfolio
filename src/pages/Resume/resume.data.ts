@@ -46,6 +46,17 @@ export const experience: Position[] = [
       "Over 4 years of following the agile scrum process on teams with anywhere from 4 to 20+ members.",
     ],
   },
+  {
+    jobTitle: "Web Developer (contract)",
+    company: "Two Row Studio",
+    companyLogo: "two_row_studio.jpeg",
+    startDate: "2017-02-01",
+    endDate: "2017-04-01",
+    bulletPoints: [
+      "Leveraged WordPress themes and plugins with a focus on modularity.",
+      "Enhanced user experience with jQuery/Ajax client/server communication.",
+    ],
+  },
 ];
 
 export const education: EducationEntry[] = [

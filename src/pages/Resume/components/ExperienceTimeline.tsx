@@ -6,6 +6,7 @@ import { TimelineBullet } from "./TimelineBullet";
 import { formatDateRange } from "../resume.utils";
 import type { Position } from "../resume.types";
 import {
+  motionLayerStyle,
   timelineBulletVariants,
   timelineFadeInVariants,
   timelineLineDelayStyle,
@@ -36,6 +37,7 @@ export function ExperienceTimeline({
               title={
                 <motion.span
                   custom={index}
+                  style={motionLayerStyle}
                   variants={timelineFadeInVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -47,6 +49,7 @@ export function ExperienceTimeline({
               bullet={
                 <motion.div
                   custom={index}
+                  style={motionLayerStyle}
                   variants={timelineBulletVariants}
                   initial="hidden"
                   whileInView="visible"
@@ -61,6 +64,7 @@ export function ExperienceTimeline({
             >
               <motion.div
                 custom={index}
+                style={motionLayerStyle}
                 variants={timelineFadeInVariants}
                 initial="hidden"
                 whileInView="visible"

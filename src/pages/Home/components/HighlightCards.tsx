@@ -17,6 +17,10 @@ const QUADRANT_OFFSETS = [
   { x: 60, y: 60 },
 ];
 
+// Delays the fly-in past the router's page view-transition (~0.1s crossfade) so the
+// animation doesn't start while Safari is still handing off from the transition snapshot.
+const ENTRANCE_START_DELAY = 0.15;
+
 export function HighlightCards({ entries }: Readonly<HighlightCardsProps>) {
   return (
     <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
@@ -25,12 +29,17 @@ export function HighlightCards({ entries }: Readonly<HighlightCardsProps>) {
         return (
           <motion.div
             key={entry.title}
+            style={{ height: "100%", willChange: "transform, opacity", backfaceVisibility: "hidden" }}
             initial={{ opacity: 0, x: offset.x, y: offset.y }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+            transition={{
+              duration: 0.5,
+              delay: ENTRANCE_START_DELAY + index * 0.1,
+              ease: "easeOut",
+            }}
           >
-            <Card className={classes.card} withBorder radius="xs" p="xl">
+            <Card className={classes.card} withBorder radius="xs" p="xl" h="100%">
               <Group gap="md" align="flex-start" wrap="nowrap">
                 <HighlightIcon icon={entry.icon} />
                 <Stack gap="xs">

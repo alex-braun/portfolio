@@ -88,7 +88,7 @@ a {
   animation: none;
 }
 ::view-transition-new(root) {
-  animation: fade .1s ease-in-out;
+  animation: fade 100ms ease-in-out;
 }
 
 @keyframes fade {
