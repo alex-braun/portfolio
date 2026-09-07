@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.caption {
+  margin-bottom: 6px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--mantine-color-border);
+  background-color: var(--mantine-color-card-bg);
+  box-shadow: none;
+  transition: box-shadow 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: var(--mantine-shadow-md);
+}
+
+.note {
+  white-space: normal;
+}

@@ -1,0 +1,1 @@
+export { SupabaseAvatar } from './SupabaseAvatar'
