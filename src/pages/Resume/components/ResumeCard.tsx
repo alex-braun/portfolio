@@ -4,7 +4,7 @@ import classes from "@pages/SelectedWork/SelectedWork.module.css";
 
 export function ResumeCard({ children }: Readonly<PropsWithChildren>) {
   return (
-    <Card className={classes.card} radius="xs" p="xl">
+    <Card className={classes.card} radius="xs">
       {children}
     </Card>
   );
