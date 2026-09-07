@@ -241,7 +241,12 @@ function Layout() {
   const location = useLocation();
   const pageTitle = getPageTitle(location.pathname);
   return (
-    <Container size="xl" pt={{ base: "lg", sm: 70 }} pb="xl" px="xl">
+    <Container
+      size="xl"
+      pt={{ base: "lg", sm: 70 }}
+      pb="xl"
+      px={{ base: "sm", sm: "xl" }}
+    >
       <Flex gap="lg" align="stretch" direction={{ base: "column", md: "row" }}>
         {/* Sidebar - Responsive width */}
         <Box w={{ base: "100%", md: 250 }} style={{ flexShrink: 0 }}>
@@ -262,7 +267,7 @@ function Layout() {
             }}
           >
             <PageHeader title={pageTitle} />
-            <Box p="xl">
+            <Box p={{ base: "sm", sm: "xl" }}>
               <Outlet />
             </Box>
           </Card>

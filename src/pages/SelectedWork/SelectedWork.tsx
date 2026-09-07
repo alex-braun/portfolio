@@ -3,7 +3,7 @@ import classes from '@pages/SelectedWork/SelectedWork.module.css';
 
 export function SelectedWorkPage() {
   return (
-    <Stack align="center" gap="md" p="md">
+    <Stack align="center" gap="md">
       <Text size="lg" c="dimmed">Check out some of my recent projects and work.</Text>
       <Stack gap="lg" w="100%" maw={800}>
         <Card className={classes.card} withBorder radius="xs" p="xl">

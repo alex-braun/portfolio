@@ -8,7 +8,7 @@ interface PageHeaderProps {
 export function PageHeader({ title }: PageHeaderProps) {
   return (
     <Flex w="100%" pb="lg" pr="0" justify="space-between" align="flex-end">
-      <Box pl="xl">
+      <Box pl={{ base: "sm", sm: "xl" }}>
         <Title order={1} size="h1" style={{ flexShrink: 0, lineHeight: 1 }}>
           {title}
         </Title>
