@@ -2,6 +2,7 @@ import { Group, List, Text, Timeline } from "@mantine/core";
 import { motion } from "motion/react";
 import { SupabaseAvatar } from "@components/SupabaseAvatar";
 import { ResumeCard } from "./ResumeCard";
+import { SkillCardsRow } from "./SkillCards";
 import { TimelineBullet } from "./TimelineBullet";
 import { formatDateRange } from "../resume.utils";
 import type { Position } from "../resume.types";
@@ -89,6 +90,12 @@ export function ExperienceTimeline({
                     <List.Item key={point}>{point}</List.Item>
                   ))}
                 </List>
+                {position.skills && (
+                  <SkillCardsRow
+                    skills={position.skills}
+                    caption={position.skillsCaption}
+                  />
+                )}
               </motion.div>
             </Timeline.Item>
           ))}

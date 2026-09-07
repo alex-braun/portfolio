@@ -12,6 +12,8 @@ export const experience: Position[] = [
       "Built an AI-assisted test migration workflow that runs conversions concurrently across git worktrees using subagents. It ports the behavior under test rather than the original syntax, so coverage carries over instead of being hand-rewritten, and flags gaps for human review rather than guessing.",
       "Designed an AI-driven mocking layer that let the frontend team build against realistic data 6 weeks before backend endpoints were complete, keeping the back-to-school release launch off the critical path.",
     ],
+    skills: [{ name: "AWS" }, { name: "Java" }, { name: "Claude" }],
+    skillsCaption: "+ New in this role",
   },
   {
     jobTitle: "Senior Software Engineer",
@@ -24,6 +26,14 @@ export const experience: Position[] = [
       "Closed a data-exposure path in a new parent-facing report view by scoping API access to the requesting parent's own student and removing out-of-scope calls from the request path.",
       "Managed 4 contractors through a 3-month cleanup of frontend UI library technical debt, clearing the blockers for a React 18 upgrade.",
     ],
+    skills: [
+      { name: "React" },
+      { name: "React-Redux" },
+      { name: "Typescript" },
+      { name: "MySQL" },
+      { name: "CSS" },
+      { name: "Playwright" },
+    ],
   },
   {
     jobTitle: "Senior Software Engineer",
@@ -34,6 +44,12 @@ export const experience: Position[] = [
     bulletPoints: [
       "F1V Team lead, overseeing and mentoring fellow F1V engineers on agile teams.",
     ],
+    skills: [
+      { name: "React-Redux" },
+      { name: "GraphQL" },
+      { name: "Victory Chart" },
+    ],
+    skillsCaption: "+ New in this role",
   },
   {
     jobTitle: "Software Engineer",
@@ -44,6 +60,12 @@ export const experience: Position[] = [
     bulletPoints: [
       "Leadership in translating business requirements into technical specs for clients, including feasibility, timeline, and application architecture.",
       "Over 4 years of following the agile scrum process on teams with anywhere from 4 to 20+ members.",
+    ],
+    skills: [
+      { name: "React" },
+      { name: "Wordpress" },
+      { name: "Symfony" },
+      { name: "Java" },
     ],
   },
   {
@@ -56,6 +78,7 @@ export const experience: Position[] = [
       "Leveraged WordPress themes and plugins with a focus on modularity.",
       "Enhanced user experience with jQuery/Ajax client/server communication.",
     ],
+    skills: [{ name: "Wordpress" }, { name: "jQuery" }, { name: "Ajax" }],
   },
 ];
 

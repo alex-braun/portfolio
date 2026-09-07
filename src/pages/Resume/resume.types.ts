@@ -13,11 +13,20 @@ export interface DateRange {
   endDate?: string;
 }
 
+export interface Skill {
+  name: string;
+  /** Optional one-line note, used sparingly where it adds real signal. */
+  note?: string;
+}
+
 export interface Position extends DateRange {
   jobTitle: string;
   company: string;
   companyLogo: string;
   bulletPoints: string[];
+  skills?: Skill[];
+  /** Overrides the default row label, e.g. "+ New in this role" for a promoted role at the same company. */
+  skillsCaption?: string;
 }
 
 export interface EducationEntry extends DateRange {
