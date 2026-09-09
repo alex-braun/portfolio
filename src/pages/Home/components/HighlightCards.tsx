@@ -39,7 +39,7 @@ export function HighlightCards({ entries }: Readonly<HighlightCardsProps>) {
               ease: "easeOut",
             }}
           >
-            <Card className={classes.card} withBorder radius="xs" p="xl" h="100%">
+            <Card className={classes.card} shadow="xs" radius="md" p="xl" h="100%">
               <Group gap="md" align="flex-start" wrap="nowrap">
                 <HighlightIcon icon={entry.icon} />
                 <Stack gap="xs">

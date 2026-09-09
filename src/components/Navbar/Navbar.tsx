@@ -1,64 +1,91 @@
-import { Burger, Group, ActionIcon } from '@mantine/core';
+import { useEffect, useState } from 'react';
+import { Burger, Collapse, Container, Group, ActionIcon, useMantineColorScheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router';
-import { IconSun, IconMoon, IconHome, IconFileText, IconBriefcase, IconMail } from '@tabler/icons-react';
-import { useMantineColorScheme } from '@mantine/core';
+import { IconSun, IconMoon } from '@tabler/icons-react';
+import { SupabaseAvatar } from '@components/SupabaseAvatar';
 import classes from '@components/Navbar/Navbar.module.css';
 
 const links = [
-  { link: '/', label: 'About', icon: IconHome },
-  { link: '/resume', label: 'Resume', icon: IconFileText },
-  { link: '/selected-work', label: 'Selected Work', icon: IconBriefcase },
-  { link: '/contact', label: 'Contact', icon: IconMail },
+  { link: '/', label: 'About' },
+  { link: '/resume', label: 'Resume' },
+  { link: '/selected-work', label: 'Selected Work' },
+  { link: '/contact', label: 'Contact' },
 ];
 
 export function Navbar() {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
-  const items = links.map((link) => {
-    const Icon = link.icon;
-    const isActive = location.pathname === link.link;
-    return (
-      <Link
-        key={link.label}
-        to={link.link}
-        className={classes.link}
-        data-active={isActive || undefined}
-        viewTransition
-      >
-        <Icon size={16} style={{ marginRight: 8 }} />
-        {link.label}
-      </Link>
-    );
-  });
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 4);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    close();
+  }, [location.pathname, close]);
+
+  const renderLinks = (onNavigate?: () => void) =>
+    links.map((link) => {
+      const isActive = location.pathname === link.link;
+      return (
+        <Link
+          key={link.label}
+          to={link.link}
+          className={classes.link}
+          data-active={isActive || undefined}
+          viewTransition
+          onClick={onNavigate}
+        >
+          {link.label}
+        </Link>
+      );
+    });
 
   return (
-    <header className={classes.header}>
-      <div className={classes.inner}>
-        <Group gap={25} visibleFrom="xs">
-          {items}
-        </Group>
+    <header className={`${classes.header} ${scrolled ? classes.scrolled : ''}`}>
+      <Container size="xl" px={{ base: 'sm', sm: 'xl' }} className={classes.inner}>
+        <Link to="/" className={classes.brand} viewTransition>
+          <SupabaseAvatar
+            path="alex_headshot.jpg"
+            fallbackSrc="https://i.imgur.com/ZL52Q2D.png"
+            alt="Alex Braun"
+            size={34}
+            radius={17}
+          />
+          <span className={classes.brandName}>Alex Braun</span>
+        </Link>
 
-        <ActionIcon
-          onClick={() => toggleColorScheme()}
-          variant="default"
-          size="lg"
-          aria-label="Toggle color scheme"
-          style={{ position: 'absolute', right: '16px' }}
-        >
-          {colorScheme === 'dark' ? <IconSun size={18} /> : <IconMoon size={18} />}
-        </ActionIcon>
-        
-        <Burger 
-          opened={opened} 
-          onClick={toggle} 
-          hiddenFrom="xs" 
-          size="sm" 
-          style={{ position: 'absolute', right: '16px' }}
-        />
-      </div>
+        <Group gap={32}>
+          <Group gap={28} visibleFrom="xs">
+            {renderLinks()}
+          </Group>
+
+          <Group gap={4}>
+            <ActionIcon
+              onClick={() => toggleColorScheme()}
+              variant="subtle"
+              size="lg"
+              aria-label="Toggle color scheme"
+            >
+              {colorScheme === 'dark' ? <IconSun size={18} /> : <IconMoon size={18} />}
+            </ActionIcon>
+
+            <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" aria-label="Toggle navigation" />
+          </Group>
+        </Group>
+      </Container>
+
+      <Collapse in={opened} className={classes.mobileMenu}>
+        <Container size="xl" px={{ base: 'sm', sm: 'xl' }} className={classes.mobileMenuInner}>
+          {renderLinks(close)}
+        </Container>
+      </Collapse>
     </header>
   );
 }
