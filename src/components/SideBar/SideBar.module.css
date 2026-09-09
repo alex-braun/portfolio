@@ -2,8 +2,16 @@
   position: static;
 }
 
-.desktop {
-  position: sticky;
-  top: 70px;
-  z-index: 100;
+/* Matches theme.breakpoints.md in App.tsx (1095px) - below this the layout
+   stacks the sidebar above the main content, so it should scroll inline
+   rather than stick. */
+@media (min-width: 992px) {
+  .sidebar {
+    position: sticky;
+    /* Navbar is a sticky 70px header (see Navbar.module.css .inner height).
+       Container's pt is "xl" at this breakpoint (App.tsx), so match that gap
+       here - using "lg" caused the sidebar to lock a few pixels early and
+       visibly jump when the sticky point engaged. */
+    top: calc(70px + var(--mantine-spacing-xl));
+  }
 }

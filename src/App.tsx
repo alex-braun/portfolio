@@ -17,6 +17,7 @@ import {
   useLocation,
 } from "react-router";
 import { PageHeader } from "@components/PageHeader/PageHeader";
+import { Navbar } from "@components/Navbar/Navbar";
 import "@mantine/core/styles.css";
 import "@/App.css";
 import { SideBar } from "@components";
@@ -44,13 +45,6 @@ import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "@pages";
 // --raisin-black: #1C1523;
 
 const theme = createTheme({
-  breakpoints: {
-    xs: "36em", // 576px
-    sm: "48em", // 768px
-    md: "68.4375em", // 1078px (changed from 62em/992px)
-    lg: "75em", // 1200px
-    xl: "88em", // 1408px
-  },
   colors: {
     ...DEFAULT_THEME.colors,
     white: [
@@ -114,13 +108,20 @@ const theme = createTheme({
     ],
   },
 
+  fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+
   shadows: {
     md: "1px 1px 3px rgba(0, 0, 0, .25)",
     xl: "5px 5px 3px rgba(0, 0, 0, .25)",
   },
 
   headings: {
-    fontFamily: "Roboto, sans-serif",
+    // Was pinned to Roboto, which meant every Title (page headings, card
+    // names like "Alex Braun") stayed on the old font while only plain
+    // body text picked up Inter - headings are most of the visible large
+    // text on this site, so that's why the font swap looked like it had
+    // no effect at all.
+    fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
     sizes: {
       h1: { fontSize: "30px" },
     },
@@ -164,9 +165,17 @@ const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
     "--custom-link-text-hover-0": theme.black, // darker/near-black on hover - 20:1
     "--custom-link-text-focus-0": theme.black, // same treatment on keyboard focus as hover - 20:1
     "--custom-link-bg-active-0": theme.black, // active-nav text color; darker like hover/focus rather than a separate accent hue - 20:1
+    "--custom-navbar-blur-bg": "#ffffff4d", // translucent glass fill behind the sticky top navbar once scrolled; backdrop-filter blur does the legibility work
+    "--custom-navbar-border": theme.colors.gray[4], // #C8C8C8 - soft hairline against the white navbar
   },
   dark: {
     "--mantine-color-body": theme.colors.dark[1],
+    "--custom-navbar-blur-bg": "#2021244d", // same translucent-glass treatment as light mode, tinted from the dark body color (dark[1] = #202124)
+    // gray[4] (#C8C8C8) is the light branch's navbar border, but that same
+    // value against a dark navbar reads as a near-white line instead of a
+    // soft hairline - gray[1] is the muted mid-gray already used for
+    // --mantine-color-border in this branch, so it reads the same way here.
+    "--custom-navbar-border": theme.colors.gray[1],
     "--mantine-color-primary-bg": theme.colors.dark[0],
     "--mantine-color-primary-text": theme.colors.gray[2],
     // Was dark[1] (#202124) - same shade as the page body, so the content
@@ -241,39 +250,38 @@ function Layout() {
   const location = useLocation();
   const pageTitle = getPageTitle(location.pathname);
   return (
-    <Container
-      size="xl"
-      pt={{ base: "lg", sm: 70 }}
-      pb="xl"
-      px={{ base: "sm", sm: "xl" }}
-    >
-      <Flex gap="lg" align="stretch" direction={{ base: "column", md: "row" }}>
-        {/* Sidebar - Responsive width */}
-        <Box w={{ base: "100%", md: 250 }} style={{ flexShrink: 0 }}>
+    <>
+      <Navbar />
+      <Container
+        size="xl"
+        pt={{ base: "lg", sm: "xl" }}
+        pb="xl"
+        px={{ base: "sm", sm: "xl" }}
+      >
+        <Flex gap="lg" align="stretch" direction={{ base: "column", md: "row" }}>
+          {/* Sidebar owns its own responsive width/spacer - see SideBar.tsx */}
           <SideBar />
-        </Box>
 
-        {/* Main content - Flexible width */}
-        <Box flex={1} w="100%">
-          <Card
-            p="0"
-            withBorder
-            // radius="lg"
-            style={{
-              backgroundColor: "var(--mantine-color-card-bg)",
-              borderColor: "var(--mantine-color-border)",
-              //   color: 'var(--mantine-color-primary-text)',
-              //   borderWidth: '3px',
-            }}
-          >
-            <PageHeader title={pageTitle} />
-            <Box p={{ base: "sm", sm: "xl" }}>
-              <Outlet />
-            </Box>
-          </Card>
-        </Box>
-      </Flex>
-    </Container>
+          {/* Main content - Flexible width */}
+          <Box flex={1} w="100%">
+            <Card
+              p="0"
+              pt="md"
+              // radius="lg"
+              style={{
+                backgroundColor: "var(--mantine-color-card-bg)",
+                //   color: 'var(--mantine-color-primary-text)',
+              }}
+            >
+              <PageHeader title={pageTitle} />
+              <Box p={{ base: "sm", sm: "xl" }}>
+                <Outlet />
+              </Box>
+            </Card>
+          </Box>
+        </Flex>
+      </Container>
+    </>
   );
 }
 

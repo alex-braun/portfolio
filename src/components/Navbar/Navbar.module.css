@@ -1,36 +1,74 @@
 .header {
-  height: 70px;
-  background-color: var(--custom-card-bg-1);
-  border-left: 1px solid var(--mantine-color-border);
-  border-bottom: 1px solid var(--mantine-color-border);
   position: sticky;
   top: 0;
   z-index: 100;
-  width: fit-content;
-  margin-left: auto;
-  /* border-radius: 0 0 0 var(--mantine-radius-lg); */
+  width: 100%;
+  background: transparent;
+  /* Always-on, deliberately soft hairline. Themed per color scheme in
+     App.tsx's cssVariablesResolver - the same light gray that's soft on a
+     white navbar reads as near-white (too high-contrast) on a dark one. */
+  border-bottom: 1px solid var(--custom-navbar-border);
+  transition: background-color 200ms ease;
+}
+
+/* Blur-glass state once the page has scrolled - transparent at rest so the
+   bar reads as part of the page, then separates from content on scroll. */
+.scrolled {
+  background: var(--custom-navbar-blur-bg);
+  backdrop-filter: blur(45px);
+  -webkit-backdrop-filter: blur(45px);
 }
 
 .inner {
-  height: 100%;
+  height: 70px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-  gap: 8px;
-  position: relative;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  min-width: 0;
+  /* The sidebar profile card below adds its own --mantine-spacing-md
+     padding before the headshot; matching that here lines the navbar
+     avatar up with the headshot instead of the card's outer edge. */
+  padding-left: var(--mantine-spacing-md);
+}
+
+.brandName {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--custom-h1-color);
+  white-space: nowrap;
 }
 
 .link {
   display: flex;
   align-items: center;
-  padding: 4px 6px;
-  text-decoration: none;
+  padding: 6px 4px;
   font-size: var(--mantine-font-size-sm);
   font-weight: 500;
+  text-decoration: none;
   border-radius: var(--mantine-radius-xs);
-  transition: all 0.2s ease;
 }
 
+.link[data-active] {
+  font-weight: 700;
+}
+
+.mobileMenu {
+  border-bottom: 1px solid var(--mantine-color-border);
+  background: var(--custom-card-bg-1);
+}
+
+.mobileMenuInner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
