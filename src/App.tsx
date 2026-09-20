@@ -1,27 +1,9 @@
-import {
-  createTheme,
-  MantineProvider,
-  Container,
-  Box,
-  Card,
-  Flex,
-  DEFAULT_THEME,
-  type CSSVariablesResolver,
-} from "@mantine/core";
+import { createTheme, MantineProvider, DEFAULT_THEME, type CSSVariablesResolver } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  Navigate,
-  useLocation,
-} from "react-router";
-import { PageHeader } from "@components/PageHeader/PageHeader";
-import { Navbar } from "@components/Navbar/Navbar";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import "@mantine/core/styles.css";
 import "@/App.css";
-import { SideBar } from "@components";
-import { ContactPage, HomePage, ResumePage, SelectedWorkPage } from "@pages";
+import { routes } from "@/routes";
 
 // --night: #0C0C0C; //
 // --citrine: #E5CF0E; //
@@ -231,89 +213,7 @@ const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
   },
 });
 
-function getPageTitle(pathname: string): string {
-  switch (pathname) {
-    case "/":
-      return "About";
-    case "/resume":
-      return "Resume";
-    case "/selected-work":
-      return "Selected Work";
-    case "/contact":
-      return "Contact";
-    default:
-      return "Portfolio";
-  }
-}
-
-function Layout() {
-  const location = useLocation();
-  const pageTitle = getPageTitle(location.pathname);
-  return (
-    <>
-      <Navbar />
-      <Container
-        size="xl"
-        pt={{ base: "lg", sm: "xl" }}
-        pb="xl"
-        px={{ base: "sm", sm: "xl" }}
-      >
-        <Flex gap="lg" align="stretch" direction={{ base: "column", md: "row" }}>
-          {/* Sidebar owns its own responsive width/spacer - see SideBar.tsx */}
-          <SideBar />
-
-          {/* Main content - Flexible width */}
-          <Box flex={1} w="100%">
-            <Card
-              p="0"
-              pt="md"
-              // radius="lg"
-              style={{
-                backgroundColor: "var(--mantine-color-card-bg)",
-                //   color: 'var(--mantine-color-primary-text)',
-              }}
-            >
-              <PageHeader title={pageTitle} />
-              <Box p={{ base: "sm", sm: "xl" }}>
-                <Outlet />
-              </Box>
-            </Card>
-          </Box>
-        </Flex>
-      </Container>
-    </>
-  );
-}
-
-// Router configuration
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "resume",
-        element: <ResumePage />,
-      },
-      {
-        path: "selected-work",
-        element: <SelectedWorkPage />,
-      },
-      {
-        path: "contact",
-        element: <ContactPage />,
-      },
-      {
-        path: "*",
-        element: <Navigate to="/" replace />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(routes);
 
 function App() {
   const colorScheme = useColorScheme();

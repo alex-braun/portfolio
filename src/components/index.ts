@@ -1,6 +1,7 @@
 export { Navbar } from './Navbar/Navbar'
 export { NavButton } from './NavButton'
 export { PageHeader } from './PageHeader/PageHeader'
-export { SideBar } from './SideBar/SideBar'
+export { PageAside } from './PageAside/PageAside'
+export { Profile } from './Profile/Profile'
 export { SupabaseImage } from './SupabaseImage'
 export { SupabaseAvatar } from './SupabaseAvatar'
