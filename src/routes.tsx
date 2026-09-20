@@ -3,7 +3,7 @@
    file; the Layout component it references is only ever used here. */
 import type { ReactNode } from "react";
 import { Box, Card, Container, Flex } from "@mantine/core";
-import { Navigate, Outlet, useLocation, type RouteObject } from "react-router";
+import { Navigate, Outlet, ScrollRestoration, useLocation, type RouteObject } from "react-router";
 import { PageHeader } from "@components/PageHeader/PageHeader";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PageAside, Profile } from "@components";
@@ -46,6 +46,7 @@ function Layout() {
   const aside = getPageAside(location.pathname);
   return (
     <>
+      <ScrollRestoration />
       <Navbar />
       <Container
         size="xl"
