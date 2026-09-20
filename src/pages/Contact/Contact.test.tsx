@@ -19,6 +19,19 @@ async function fillRequiredFields(user: ReturnType<typeof userEvent.setup>) {
   await user.type(screen.getByLabelText("Message", { exact: false }), "Are you open to opportunities?");
 }
 
+// iOS Safari auto-zooms the page when a focused field's computed font-size
+// is under 16px. jsdom can't resolve CSS custom properties/calc(), so this
+// can't assert the final pixel value - it instead locks in that each field
+// is wired to the "md" font-size token (which resolves to 16px) instead of
+// silently falling back to Mantine's default "sm" token (14px).
+describe("ContactPage iOS zoom prevention", () => {
+  it.each(["Name", "Email", "Subject", "Message"])("gives the %s field a 16px font-size token", (label) => {
+    renderContactPage();
+    const field = screen.getByLabelText(label, { exact: false });
+    expect(field).toHaveStyle({ fontSize: "var(--mantine-font-size-md)" });
+  });
+});
+
 // Honeypot rejection itself happens inside Netlify's own Forms
 // infrastructure (declared via the hidden static form in index.html, see
 // ADR 0004) - there's no app code left to exercise for that case, so it
