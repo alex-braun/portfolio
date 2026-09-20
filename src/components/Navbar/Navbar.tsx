@@ -3,7 +3,6 @@ import { Burger, Collapse, Container, Group, ActionIcon, useMantineColorScheme }
 import { useDisclosure } from '@mantine/hooks';
 import { Link, useLocation } from 'react-router';
 import { IconSun, IconMoon } from '@tabler/icons-react';
-import { SupabaseAvatar } from '@components/SupabaseAvatar';
 import classes from '@components/Navbar/Navbar.module.css';
 
 const links = [
@@ -51,14 +50,8 @@ export function Navbar() {
     <header className={`${classes.header} ${scrolled ? classes.scrolled : ''}`}>
       <Container size="xl" px={{ base: 'sm', sm: 'xl' }} className={classes.inner}>
         <Link to="/" className={classes.brand} viewTransition>
-          <SupabaseAvatar
-            path="alex_headshot.jpg"
-            fallbackSrc="https://i.imgur.com/ZL52Q2D.png"
-            alt="Alex Braun"
-            size={34}
-            radius={17}
-          />
           <span className={classes.brandName}>Alex Braun</span>
+          <span className={classes.brandTagline}>software engineer</span>
         </Link>
 
         <Group gap={32}>

@@ -3,9 +3,9 @@ import classes from '@pages/SelectedWork/SelectedWork.module.css';
 
 export function SelectedWorkPage() {
   return (
-    <Stack align="center" gap="md">
+    <Stack gap="md">
       <Text size="lg" c="dimmed">Check out some of my recent projects and work.</Text>
-      <Stack gap="lg" w="100%" maw={800}>
+      <Stack gap="lg" w="100%">
         <Card className={classes.card} withBorder radius="xs" p="xl">
           <Title order={3} mb="sm">E-Commerce Website</Title>
           <Text mb="md">Full-stack e-commerce platform built with React, Node.js, and MongoDB.</Text>

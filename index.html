@@ -12,5 +12,21 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!--
+      Netlify Forms detects <form> tags by scanning the built static HTML,
+      but this app renders its Contact form client-side, invisible to that
+      scan. This hidden duplicate - name, fields, and honeypot attribute
+      matching the real React form in Contact.tsx exactly - is what Netlify
+      actually registers; the real form's JS submission is matched to it by
+      the "contact" form-name field. See ADR 0004.
+    -->
+    <form name="contact" data-netlify="true" netlify-honeypot="company" hidden netlify>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input type="text" name="company" />
+    </form>
   </body>
 </html>
