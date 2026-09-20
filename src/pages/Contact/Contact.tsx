@@ -3,6 +3,11 @@ import { Alert, Box, Button, Group, Stack, Text, TextInput, Textarea } from "@ma
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
+// iOS Safari auto-zooms the page on focus for any form field whose computed
+// font-size is under 16px. Mantine's default input size ("sm") renders at
+// 14px, so every field needs this bumped explicitly.
+const preventIOSZoomStyles = { input: { fontSize: "var(--mantine-font-size-md)" } };
+
 // Netlify Forms only registers a form it can see in the built static HTML
 // (see the hidden duplicate in index.html), and only accepts submissions
 // that include the matching form-name field, url-encoded like a native
@@ -48,10 +53,10 @@ export function ContactPage() {
 
       <Box component="form" onSubmit={handleSubmit} maw={480}>
         <Stack gap="sm">
-          <TextInput name="name" label="Name" required />
-          <TextInput name="email" type="email" label="Email" required />
-          <TextInput name="subject" label="Subject" required />
-          <Textarea name="message" label="Message" minRows={5} required />
+          <TextInput name="name" label="Name" required styles={preventIOSZoomStyles} />
+          <TextInput name="email" type="email" label="Email" required styles={preventIOSZoomStyles} />
+          <TextInput name="subject" label="Subject" required styles={preventIOSZoomStyles} />
+          <Textarea name="message" label="Message" minRows={5} required styles={preventIOSZoomStyles} />
 
           {/* Honeypot field - hidden from sighted and screen-reader users alike. */}
           <TextInput
